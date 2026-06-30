@@ -1,0 +1,8 @@
+{
+  "name": "Remix: Karma Gamez",
+  "description": "An interactive Web3 dashboard and simulator for staking Karma Power, acquiring Karma Butterfly NFTs, and managing the high-transparency Weekly Karma Pool distribution.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

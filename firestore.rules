@@ -1,0 +1,13 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Users profiles are readable and writable by anyone (simplified simulation logic)
+    match /users/{userId} {
+      allow read, write: if true;
+    }
+    // Activity logs are readable and writable
+    match /activity_logs/{logId} {
+      allow read, write: if true;
+    }
+  }
+}
