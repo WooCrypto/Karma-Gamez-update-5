@@ -25,11 +25,12 @@ import { ActivityLog, KarmaButterflyNFT } from './types';
 // Initialize Firebase App using injected configurations
 const app = initializeApp(config);
 
-// Initialize Firestore with robust offline persistent cache
+// Initialize Firestore with robust offline persistent cache and long-polling for sandbox environment compatibility
 const db = initializeFirestore(app, {
   localCache: persistentLocalCache({
     tabManager: persistentMultipleTabManager()
-  })
+  }),
+  experimentalForceLongPolling: true
 });
 
 export { db };

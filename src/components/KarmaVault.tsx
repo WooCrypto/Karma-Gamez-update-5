@@ -114,13 +114,13 @@ export default function KarmaVault({
           </p>
         </div>
 
-        {/* Daily Free Claim Panel & Trickle Indicator */}
+        {/* No-Cost Daily Claim Panel & Trickle Indicator */}
         <div className="mt-5 grid grid-cols-1 md:grid-cols-2 gap-3 font-sans">
-          {/* Daily 100,000 Free Claim */}
+          {/* No-Cost 100,000 Daily Claim */}
           <div className="bg-black/20 border border-white/5 rounded-xl p-4 flex flex-col justify-between" id="daily-claim-box">
             <div className="flex items-start justify-between">
               <div>
-                <span className="text-[10px] uppercase font-black text-brand-purple tracking-wider">Free Daily Grant</span>
+                <span className="text-[10px] uppercase font-black text-brand-purple tracking-wider">No-Cost Daily Grant</span>
                 <span className="block text-sm font-extrabold text-white mt-1">+100,000 KP</span>
               </div>
               <Sparkles className="w-5 h-5 text-brand-purple animate-pulse" />

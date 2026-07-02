@@ -976,7 +976,7 @@ export default function App() {
                       : 'text-white/40 hover:text-white hover:bg-white/5'
                   }`}
                 >
-                  🔒 Free Staking
+                  🔒 No-Cost Staking
                   <span className="absolute -top-1 -right-1 flex h-2 w-2">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#14F195] opacity-75"></span>
                     <span className="relative inline-flex rounded-full h-2 w-2 bg-[#14F195]"></span>
@@ -1177,36 +1177,35 @@ export default function App() {
           </div>
         </div>
 
-        {/* FREE STAKING SELLING POINT PROMOTION BANNER */}
+        {/* NO-COST STAKING SELLING POINT PROMOTION BANNER */}
         <div className="bg-gradient-to-r from-[#14F195]/10 via-brand-cyan/10 to-brand-purple/10 border border-[#14F195]/20 rounded-2xl p-5 md:p-6 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-5 shadow-lg shadow-[#14F195]/5 mb-6">
           <div className="absolute top-0 right-0 w-32 h-32 bg-[#14F195]/5 rounded-full blur-2xl pointer-events-none" />
           <div className="space-y-1.5 text-center md:text-left">
             <div className="flex flex-wrap items-center justify-center md:justify-start gap-2">
               <span className="bg-[#14F195]/20 text-[#14F195] text-[9px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider font-mono border border-[#14F195]/30">
-                🎉 100% Free Staking
+                🎉 100% No-Cost Staking
               </span>
               <span className="text-white/40 text-[10px]">•</span>
               <span className="text-brand-cyan text-[10px] font-mono font-bold uppercase tracking-wider">Zero Token Deposit Required</span>
             </div>
             <h3 className="text-sm font-black text-white uppercase tracking-wider">
-              The Karma Games Party: Show Up, Claim &amp; Stake!
+              Earn rewards without upfront capital: Show Up, Claim &amp; Stake!
             </h3>
             <p className="text-[11px] text-white/60 leading-relaxed max-w-2xl">
-              While you connect your wallet just like you will when we are production-ready, you never have to make any token deposits or spend real cryptocurrency. Just claim free Karma Power (KP) from our sandbox faucet, and start staking instantly to earn community distribution weights. Perfect, fun, and completely free!
+              While you connect your wallet just like you will when we are production-ready, you never have to make any token deposits or spend real cryptocurrency. Just claim free Karma Power (KP) from our sandbox faucet, and start staking instantly to earn community distribution weights. Perfect, fun, and completely free of cost!
             </p>
           </div>
           <button
             onClick={() => {
+              window.scrollTo({ top: 0, behavior: 'smooth' });
               if (!wallet.connected) {
                 window.dispatchEvent(new CustomEvent('toggle-wallet-dialog'));
-                handleTabChange('vault');
-              } else {
-                handleTabChange('vault');
               }
+              handleTabChange('vault');
             }}
             className="w-full md:w-auto bg-[#14F195] hover:bg-[#14F195]/90 text-black px-4 py-2.5 rounded-xl font-black text-[10px] uppercase tracking-wider hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer whitespace-nowrap shadow-md shadow-[#14F195]/20"
           >
-            🔒 Enter Free Staking Vault
+            🔒 Earn Without Initial Capital
           </button>
         </div>
 
@@ -1729,24 +1728,27 @@ export default function App() {
                 <div className="space-y-2 text-center md:text-left font-sans">
                   <div className="flex flex-wrap items-center justify-center md:justify-start gap-2">
                     <span className="bg-[#14F195]/20 text-[#14F195] text-[10px] font-bold px-3 py-0.5 rounded-full uppercase tracking-wider font-mono border border-[#14F195]/30">
-                      🎉 100% Free Staking
+                      🎉 100% No-Cost Staking
                     </span>
                     <span className="text-white/40 text-xs">•</span>
                     <span className="text-brand-cyan text-[10px] font-mono font-bold uppercase tracking-wider">Zero Token Deposit Required</span>
                   </div>
                   <h3 className="text-base sm:text-lg font-black text-white uppercase tracking-wider italic">
-                    The Karma Games Party: Show Up, Claim &amp; Stake!
+                    Earn rewards without upfront capital: Show Up, Claim &amp; Stake!
                   </h3>
                   <p className="text-xs text-white/60 leading-relaxed max-w-2xl">
-                    While you connect your wallet just like you will when we are production-ready, you never have to make any token deposits or spend real cryptocurrency. Just claim free Karma Power (KP) from our sandbox faucet, and start staking instantly to earn community distribution weights. Perfect, fun, and completely free!
+                    While you connect your wallet just like you will when we are production-ready, you never have to make any token deposits or spend real cryptocurrency. Just claim free Karma Power (KP) from our sandbox faucet, and start staking instantly to earn community distribution weights. Perfect, fun, and completely free of cost!
                   </p>
                 </div>
                 <button
-                  onClick={() => window.dispatchEvent(new CustomEvent('toggle-wallet-dialog'))}
+                  onClick={() => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    window.dispatchEvent(new CustomEvent('toggle-wallet-dialog'));
+                  }}
                   className="w-full md:w-auto bg-[#14F195] hover:bg-[#14F195]/90 text-black px-6 py-3.5 rounded-xl font-black text-xs uppercase tracking-wider hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer whitespace-nowrap shadow-lg shadow-[#14F195]/20 shrink-0 font-sans"
                   id="btn-promo-connect"
                 >
-                  🔒 Connect Wallet &amp; Enter Staking
+                  🔒 Connect Wallet &amp; Earn Rewards
                 </button>
               </div>
 
