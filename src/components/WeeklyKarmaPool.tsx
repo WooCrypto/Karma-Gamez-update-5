@@ -183,9 +183,18 @@ export default function WeeklyKarmaPool({
                 </div>
               </div>
             ) : (
-              <div className="text-[11px] text-white/50 italic bg-black/20 border border-white/5 rounded-xl p-3.5 px-4 text-center">
-                Connect Wallet to unlock active simulated SOL claim distributions.
-              </div>
+              <button
+                onClick={() => window.dispatchEvent(new CustomEvent('toggle-wallet-dialog'))}
+                className="w-full text-left bg-[#14F195]/5 hover:bg-[#14F195]/10 border border-dashed border-[#14F195]/20 hover:border-[#14F195]/40 text-white/80 hover:text-white rounded-xl p-4 text-[11px] font-sans transition-all flex flex-col sm:flex-row items-center justify-between gap-3 cursor-pointer group"
+              >
+                <span className="flex items-center gap-2">
+                  <span className="text-[#14F195]">🔒</span>
+                  <span>Connect Wallet to unlock active simulated SOL claim distributions.</span>
+                </span>
+                <span className="text-[10px] bg-[#14F195] hover:bg-[#14F195]/90 text-black font-black px-3 py-1.5 rounded-lg border border-[#14F195]/30 uppercase font-mono transition-all group-hover:scale-[1.03]">
+                  Connect Wallet
+                </span>
+              </button>
             )}
           </div>
         </div>

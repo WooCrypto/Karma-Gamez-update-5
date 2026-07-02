@@ -39,10 +39,10 @@ export default function ButterflyNFTCard({ nft, wallet, onMint, onConnectWallet,
           setIsScanning(false);
           setScanStep('');
           setShowReveal(true);
-          setTimeout(() => setShowReveal(false), 4000);
-        }, 800);
-      }, 800);
-    }, 800);
+          setTimeout(() => setShowReveal(false), 3000);
+        }, 250);
+      }, 250);
+    }, 250);
   };
 
   // Helper to resolve rarity-specific styles

@@ -537,7 +537,7 @@ export default function App() {
 
             setIsAutoScanning(false);
             setAutoScanStep('');
-          }, 800);
+          }, 200);
           return;
         }
       } catch (err) {
@@ -614,9 +614,9 @@ export default function App() {
             timestamp: Date.now(),
           };
           addAndSaveLog(autoScanLog);
-        }, 850);
-      }, 750);
-    }, 700);
+        }, 300);
+      }, 250);
+    }, 200);
   };
 
   // 2. Disconnect Wallet
@@ -1196,7 +1196,14 @@ export default function App() {
             </p>
           </div>
           <button
-            onClick={() => handleTabChange('vault')}
+            onClick={() => {
+              if (!wallet.connected) {
+                window.dispatchEvent(new CustomEvent('toggle-wallet-dialog'));
+                handleTabChange('vault');
+              } else {
+                handleTabChange('vault');
+              }
+            }}
             className="w-full md:w-auto bg-[#14F195] hover:bg-[#14F195]/90 text-black px-4 py-2.5 rounded-xl font-black text-[10px] uppercase tracking-wider hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer whitespace-nowrap shadow-md shadow-[#14F195]/20"
           >
             🔒 Enter Free Staking Vault
@@ -1282,10 +1289,9 @@ export default function App() {
                 </div>
                 <button
                   onClick={() => {
-                    const trigger = document.getElementById('btn-connect-wallet-dialog');
-                    if (trigger) trigger.click();
+                    window.dispatchEvent(new CustomEvent('toggle-wallet-dialog'));
                   }}
-                  className="w-full bg-brand-cyan hover:brightness-110 text-black font-mono font-black text-[10px] uppercase tracking-wider py-2 rounded-lg cursor-pointer transition-all"
+                  className="w-full bg-[#14F195] hover:bg-[#14F195]/90 text-black font-sans font-black text-[11px] uppercase tracking-wider py-3 rounded-xl cursor-pointer hover:scale-[1.02] active:scale-[0.98] transition-all shadow-md shadow-[#14F195]/20"
                 >
                   Connect Wallet
                 </button>
@@ -1560,8 +1566,7 @@ export default function App() {
                   onMint={handleMintNFT}
                   onUnlinkNFT={() => setNft(null)}
                   onConnectWallet={() => {
-                    const trigger = document.getElementById('btn-connect-wallet-dialog');
-                    if (trigger) trigger.click();
+                    window.dispatchEvent(new CustomEvent('toggle-wallet-dialog'));
                   }}
                 />
               </div>
@@ -1622,8 +1627,7 @@ export default function App() {
               onMint={handleMintNFT}
               onUnlinkNFT={() => setNft(null)}
               onConnectWallet={() => {
-                const trigger = document.getElementById('btn-connect-wallet-dialog');
-                if (trigger) trigger.click();
+                window.dispatchEvent(new CustomEvent('toggle-wallet-dialog'));
               }}
             />
           </div>
@@ -1713,6 +1717,58 @@ export default function App() {
               }}
             />
           </div>
+        )}
+          </>
+        ) : (
+          /* DISCONNECTED STATE FOR ACTIVE INTERACTIVE TABS */
+          (activeTab === 'all' || activeTab === 'nft' || activeTab === 'vault' || activeTab === 'pool' || activeTab === 'faucet' || activeTab === 'predictions') && (
+            <div className="space-y-8 max-w-4xl mx-auto animate-in fade-in duration-300">
+              {/* THE KARMA GAMES PARTY PROMO CARD */}
+              <div className="bg-gradient-to-r from-[#14F195]/15 via-brand-cyan/10 to-brand-purple/15 border border-[#14F195]/20 rounded-2xl p-6 md:p-8 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl shadow-[#14F195]/5 animate-pulse-once">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-[#14F195]/5 rounded-full blur-2xl pointer-events-none" />
+                <div className="space-y-2 text-center md:text-left font-sans">
+                  <div className="flex flex-wrap items-center justify-center md:justify-start gap-2">
+                    <span className="bg-[#14F195]/20 text-[#14F195] text-[10px] font-bold px-3 py-0.5 rounded-full uppercase tracking-wider font-mono border border-[#14F195]/30">
+                      🎉 100% Free Staking
+                    </span>
+                    <span className="text-white/40 text-xs">•</span>
+                    <span className="text-brand-cyan text-[10px] font-mono font-bold uppercase tracking-wider">Zero Token Deposit Required</span>
+                  </div>
+                  <h3 className="text-base sm:text-lg font-black text-white uppercase tracking-wider italic">
+                    The Karma Games Party: Show Up, Claim &amp; Stake!
+                  </h3>
+                  <p className="text-xs text-white/60 leading-relaxed max-w-2xl">
+                    While you connect your wallet just like you will when we are production-ready, you never have to make any token deposits or spend real cryptocurrency. Just claim free Karma Power (KP) from our sandbox faucet, and start staking instantly to earn community distribution weights. Perfect, fun, and completely free!
+                  </p>
+                </div>
+                <button
+                  onClick={() => window.dispatchEvent(new CustomEvent('toggle-wallet-dialog'))}
+                  className="w-full md:w-auto bg-[#14F195] hover:bg-[#14F195]/90 text-black px-6 py-3.5 rounded-xl font-black text-xs uppercase tracking-wider hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer whitespace-nowrap shadow-lg shadow-[#14F195]/20 shrink-0 font-sans"
+                  id="btn-promo-connect"
+                >
+                  🔒 Connect Wallet &amp; Enter Staking
+                </button>
+              </div>
+
+              {/* DETAILED MOVEMENT SPEC SHEET */}
+              <div className="bg-[#0c0c0c]/80 border border-white/5 rounded-xl p-6 sm:p-8 space-y-6">
+                <div className="flex items-center gap-3">
+                  <Info className="w-5 h-5 text-brand-cyan" />
+                  <h3 className="text-xs font-bold text-white uppercase tracking-wider">The Vilora Labs Partnership</h3>
+                </div>
+                <p className="text-[11px] text-white/50 leading-relaxed font-sans font-normal">
+                  By pairing advanced system simulation nodes (designed by the developers at **ViloraLabs.xyz**) with creative gaming logic, we ensure that every community vote, staking weight action, and faucet request is logged instantly. We have eliminated the boring, slow, and expensive aspects of traditional cryptocurrency networks to let you experience the absolute best parts of web decentralization today. 
+                </p>
+                <div className="flex flex-wrap items-center gap-4 text-[10px] text-white/30 border-t border-white/5 pt-4 font-mono">
+                  <span>Developer Sandbox Protocol v2.5</span>
+                  <span>•</span>
+                  <span>Active Integration: Karma AI</span>
+                  <span>•</span>
+                  <span>Partnership: <a href="https://viloralabs.xyz" target="_blank" rel="noopener noreferrer" className="text-brand-cyan hover:underline hover:brightness-110">ViloraLabs.xyz</a></span>
+                </div>
+              </div>
+            </div>
+          )
         )}
 
         {/* STANDALONE FAQ, ABOUT & ROADMAP TAB */}
@@ -2025,8 +2081,6 @@ export default function App() {
             </div>
           </div>
         )}
-          </>
-        ) : null}
 
         {/* INTERMEDIATE CONGENIAL EVENT BLOCK FOR TESTING */}
         {wallet.connected && (

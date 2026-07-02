@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { WalletState } from '../types';
 import { Wallet, CheckCircle, RefreshCw, Key, ShieldAlert } from 'lucide-react';
 
@@ -18,13 +18,21 @@ export default function WalletConnect({ wallet, onConnect, onDisconnect, onAirdr
   const [isOpen, setIsOpen] = useState(false);
   const [isConnecting, setIsConnecting] = useState<'Phantom' | 'Solflare' | 'Backpack' | null>(null);
 
+  useEffect(() => {
+    const handleToggleDialog = () => {
+      setIsOpen(true);
+    };
+    window.addEventListener('toggle-wallet-dialog', handleToggleDialog);
+    return () => window.removeEventListener('toggle-wallet-dialog', handleToggleDialog);
+  }, []);
+
   const handleSelect = (provider: 'Phantom' | 'Solflare' | 'Backpack') => {
     setIsConnecting(provider);
     setTimeout(() => {
       onConnect(provider);
       setIsConnecting(null);
       setIsOpen(false);
-    }, 1000);
+    }, 100);
   };
 
   return (

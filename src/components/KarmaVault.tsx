@@ -101,9 +101,16 @@ export default function KarmaVault({
         </div>
 
         {/* REWARD FUEL INFO BANNER */}
-        <div className="mt-4 bg-gradient-to-r from-brand-cyan/15 via-brand-purple/10 to-transparent border-l-2 border-[#14F195]/70 px-3.5 py-2.5 rounded-r-xl">
-          <p className="text-[11px] text-white/90 leading-relaxed font-sans">
-            💡 <span className="font-black text-[#14F195] uppercase font-mono text-[9px] tracking-wider">Protocol Fuel Layer:</span> This reward vault is fully backed &amp; fueled by automated <strong className="text-brand-cyan">DeFi AI Trading &amp; Gold Trading</strong> protocols. It operates 100% algorithmically with absolute on-chain transparency.
+        <div className="mt-4 bg-gradient-to-r from-brand-cyan/10 via-brand-purple/5 to-black/20 border border-brand-cyan/20 rounded-xl px-4 py-3 relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-24 h-24 bg-brand-gold/5 rounded-full blur-xl pointer-events-none" />
+          <p className="text-xs text-white/95 leading-relaxed font-sans flex items-start gap-2.5">
+            <Sparkles className="w-4 h-4 text-brand-cyan shrink-0 mt-0.5 animate-pulse" />
+            <span>
+              <strong className="text-[#14F195] uppercase font-mono text-[10px] tracking-wider block mb-1">
+                ✨ Reward Pool Backing &amp; Fuel Layer
+              </strong>
+              This staking rewards vault is fully powered and continuously fueled by our high-frequency <strong className="text-brand-cyan">DeFi AI Trading</strong> &amp; algorithmic <strong className="text-brand-gold">Gold Trading</strong> systems. It operates with 100% on-chain transparency, allocating trading yield directly to amplify the distribution rewards pool.
+            </span>
           </p>
         </div>
 
@@ -123,8 +130,7 @@ export default function KarmaVault({
               {!wallet.connected ? (
                 <button
                   onClick={() => {
-                    const trigger = document.getElementById('btn-connect-wallet-dialog');
-                    if (trigger) trigger.click();
+                    window.dispatchEvent(new CustomEvent('toggle-wallet-dialog'));
                   }}
                   className="w-full text-center bg-white/5 border border-dashed border-white/20 hover:bg-white/10 text-white/75 rounded-lg py-2 px-3 text-xs font-bold transition-all cursor-pointer"
                   id="btn-daily-claim-unconnected"
